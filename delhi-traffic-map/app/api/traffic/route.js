@@ -1,15 +1,19 @@
 import { NextResponse } from 'next/server';
-import sqlite3 from 'sqlite3';
-import path from 'path';
+import { Pool } from 'pg';
+
+// 1. THIS IS THE MAGIC LINE TO FIX THE VERCEL BUILD
+export const dynamic = 'force-dynamic';
+
+// Initialize the Postgres connection pool to Supabase
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false // Supabase requires SSL connections
+  }
+});
 
 export async function GET() {
-  // CORRECTED PATH: process.cwd() is the 'delhi-traffic-map' folder. 
-  // We go up one level '../' to reach 'delhi-rain-traffic/traffic_weather.db'
-  const dbPath = path.resolve(process.cwd(), '../traffic_weather.db');
-  
-  const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY);
-
-  return new Promise((resolve, reject) => {
+  try {
     // Get the most recent data point for each location
     const query = `
       SELECT t1.*
@@ -21,13 +25,12 @@ export async function GET() {
       ) t2 ON t1.location_name = t2.location_name AND t1.timestamp_utc = t2.max_time;
     `;
 
-    db.all(query, [], (err, rows) => {
-      if (err) {
-        db.close();
-        return resolve(NextResponse.json({ error: err.message }, { status: 500 }));
-      }
-      db.close();
-      resolve(NextResponse.json(rows));
-    });
-  });
+    // Query Postgres instead of SQLite
+    const { rows } = await pool.query(query);
+    
+    return NextResponse.json(rows);
+  } catch (error) {
+    console.error("Database Error:", error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }
