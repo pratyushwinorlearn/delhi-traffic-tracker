@@ -1,62 +1,52 @@
 [
-{
-"name": "ITO Intersection",
-"lat": 28.6284,
-"lon": 77.2404,
-"notes": "Major central traffic hub"
-},
-{
-"name": "Minto Bridge Underpass",
-"lat": 28.6322,
-"lon": 77.2255,
-"notes": "Notorious for severe waterlogging"
-},
-{
-"name": "Ashram Chowk",
-"lat": 28.5718,
-"lon": 77.2608,
-"notes": "High volume intersection"
-},
-{
-"name": "Zakhira Flyover",
-"lat": 28.6653,
-"lon": 77.1706,
-"notes": "Prone to heavy monsoon jams"
-},
-{
-"name": "Pul Prahladpur Underpass",
-"lat": 28.5033,
-"lon": 77.2917,
-"notes": "Famous waterlogging hotspot on MB Road"
-},
-{
-"name": "Moolchand Flyover",
-"lat": 28.5639,
-"lon": 77.2341,
-"notes": "Ring road major bottleneck"
-},
-{
-"name": "Kashmere Gate ISBT",
-"lat": 28.6672,
-"lon": 77.2291,
-"notes": "Massive interstate traffic choke point"
-},
-{
-"name": "Dhaula Kuan",
-"lat": 28.5918,
-"lon": 77.1615,
-"notes": "Crucial airport and Gurugram connecting hub"
-},
-{
-"name": "Laxmi Nagar Vikas Marg",
-"lat": 28.6304,
-"lon": 77.2773,
-"notes": "East Delhi major bottleneck"
-},
-{
-"name": "RTR Marg Flyover",
-"lat": 28.5700,
-"lon": 77.1610,
-"notes": "Airport route bottleneck"
-}
+{ "name": "ITO Intersection", "lat": 28.6284, "lon": 77.2404, "notes": "Major central traffic hub" },
+{ "name": "Minto Bridge Underpass", "lat": 28.6322, "lon": 77.2255, "notes": "Notorious for severe waterlogging" },
+{ "name": "Ashram Chowk", "lat": 28.5718, "lon": 77.2608, "notes": "High volume intersection" },
+{ "name": "Zakhira Flyover", "lat": 28.6653, "lon": 77.1706, "notes": "Prone to heavy monsoon jams" },
+{ "name": "Pul Prahladpur Underpass", "lat": 28.5033, "lon": 77.2917, "notes": "Famous waterlogging hotspot on MB Road" },
+{ "name": "Moolchand Flyover", "lat": 28.5639, "lon": 77.2341, "notes": "Ring road major bottleneck" },
+{ "name": "Kashmere Gate ISBT", "lat": 28.6672, "lon": 77.2291, "notes": "Massive interstate traffic choke point" },
+{ "name": "Dhaula Kuan", "lat": 28.5918, "lon": 77.1615, "notes": "Crucial airport and Gurugram connecting hub" },
+{ "name": "Laxmi Nagar Vikas Marg", "lat": 28.6304, "lon": 77.2773, "notes": "East Delhi major bottleneck" },
+{ "name": "RTR Marg Flyover", "lat": 28.5700, "lon": 77.1610, "notes": "Airport route bottleneck" },
+{ "name": "AIIMS Flyover", "lat": 28.5678, "lon": 77.2100, "notes": "Ring road medical hub congestion" },
+{ "name": "Chirag Delhi Intersection", "lat": 28.5390, "lon": 77.2250, "notes": "Outer ring road nightmare" },
+{ "name": "Lajpat Nagar Central Market", "lat": 28.5695, "lon": 77.2396, "notes": "Heavy commercial zone traffic" },
+{ "name": "South Extension", "lat": 28.5683, "lon": 77.2201, "notes": "Ring road shopping district delay" },
+{ "name": "Mahipalpur NH-48", "lat": 28.5484, "lon": 77.1264, "notes": "Airport highway waterlogging" },
+{ "name": "Peera Garhi Chowk", "lat": 28.6749, "lon": 77.0927, "notes": "Outer ring road West Delhi jam" },
+{ "name": "Punjabi Bagh Club Road", "lat": 28.6660, "lon": 77.1285, "notes": "Major West Delhi intersection" },
+{ "name": "Mukarba Chowk", "lat": 28.7369, "lon": 77.1485, "notes": "Bypass intersection bottleneck" },
+{ "name": "Azadpur Mandi", "lat": 28.7061, "lon": 77.1728, "notes": "Heavy truck traffic and delays" },
+{ "name": "Seelampur Flyover", "lat": 28.6640, "lon": 77.2662, "notes": "East Delhi congestion" },
+{ "name": "Akshardham Temple", "lat": 28.6127, "lon": 77.2773, "notes": "NH9 connecting traffic" },
+{ "name": "Kalindi Kunj Border", "lat": 28.5422, "lon": 77.3105, "notes": "Noida-Delhi border crossing" },
+{ "name": "Mayur Vihar Phase 1", "lat": 28.6047, "lon": 77.2891, "notes": "Link road congestion" },
+{ "name": "Anand Vihar ISBT", "lat": 28.6469, "lon": 77.3160, "notes": "Bus and rail terminal chaos" },
+{ "name": "Ghazipur Border", "lat": 28.6253, "lon": 77.3255, "notes": "Delhi-UP major transit route" },
+{ "name": "Shahdara Flyover", "lat": 28.6923, "lon": 77.2885, "notes": "North-East Delhi hub" },
+{ "name": "Hauz Khas Village Road", "lat": 28.5523, "lon": 77.1940, "notes": "Narrow commercial street jams" },
+{ "name": "Green Park Market", "lat": 28.5583, "lon": 77.2036, "notes": "Aurobindo Marg congestion" },
+{ "name": "Munirka Outer Ring Road", "lat": 28.5558, "lon": 77.1720, "notes": "Frequent jams near JNU" },
+{ "name": "Vasant Kunj Mahipalpur Road", "lat": 28.5393, "lon": 77.1466, "notes": "Mall traffic and waterlogging" },
+{ "name": "Saket MB Road", "lat": 28.5204, "lon": 77.2140, "notes": "Mall sector severe traffic" },
+{ "name": "Mehrauli Gurgaon Road", "lat": 28.5147, "lon": 77.1721, "notes": "Andheria Mor bottleneck" },
+{ "name": "IIT Delhi Intersection", "lat": 28.5450, "lon": 77.1926, "notes": "Major South Delhi crossroad" },
+{ "name": "Okhla Phase 1", "lat": 28.5273, "lon": 77.2831, "notes": "Industrial area heavy traffic" },
+{ "name": "Nehru Place", "lat": 28.5494, "lon": 77.2520, "notes": "Massive commercial hub delays" },
+{ "name": "Greater Kailash 1 (BRT)", "lat": 28.5451, "lon": 77.2343, "notes": "BRT corridor congestion" },
+{ "name": "Dwarka Sector 21", "lat": 28.5525, "lon": 77.0583, "notes": "Airport connection road" },
+{ "name": "Janakpuri District Centre", "lat": 28.6293, "lon": 77.0811, "notes": "West Delhi commercial jam" },
+{ "name": "Rajouri Garden Ring Road", "lat": 28.6475, "lon": 77.1186, "notes": "Mall traffic bottleneck" },
+{ "name": "Rohini Court Crossing", "lat": 28.7159, "lon": 77.1168, "notes": "North-West Delhi traffic" },
+{ "name": "Pitampura TV Tower", "lat": 28.6974, "lon": 77.1408, "notes": "Netaji Subhash Marg traffic" },
+{ "name": "Mangolpuri Underpass", "lat": 28.6946, "lon": 77.0903, "notes": "Outer Ring road delays" },
+{ "name": "Paschim Vihar (Rohtak Rd)", "lat": 28.6756, "lon": 77.0999, "notes": "National highway 10 traffic" },
+{ "name": "Karol Bagh (Pusa Road)", "lat": 28.6443, "lon": 77.1895, "notes": "High density market traffic" },
+{ "name": "Patel Nagar Roundabout", "lat": 28.6478, "lon": 77.1654, "notes": "Central Delhi connector" },
+{ "name": "Connaught Place Outer Circle", "lat": 28.6335, "lon": 77.2201, "notes": "Central hub congestion" },
+{ "name": "Paharganj (DBG Road)", "lat": 28.6444, "lon": 77.2115, "notes": "Railway station chaos" },
+{ "name": "Sadar Bazar", "lat": 28.6547, "lon": 77.2023, "notes": "Wholesale market dense traffic" },
+{ "name": "Chandni Chowk", "lat": 28.6560, "lon": 77.2310, "notes": "Old Delhi severe congestion" },
+{ "name": "India Gate Hexagon", "lat": 28.6129, "lon": 77.2295, "notes": "Central VIP traffic restrictions" }
 ]
