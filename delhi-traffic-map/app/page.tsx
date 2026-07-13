@@ -124,7 +124,6 @@ export default function Home() {
       const zoneColor = flowRatio < 0.5 ? '#ef4444' : flowRatio < 0.8 ? '#eab308' : '#22c55e';
       const delayPercentage = Math.round((1 - flowRatio) * 100);
 
-      // Kept radius at 50 for specific street tracking
       const marker = L.circle([loc.lat, loc.lon], {
         radius: 250, fillColor: zoneColor, color: zoneColor, weight: 2, opacity: 0.8, fillOpacity: 0.5
       });
@@ -152,7 +151,6 @@ export default function Home() {
       marker.addTo(markersLayerRef.current);
     });
 
-    // Auto-zoom the map to fit all the markers perfectly
     if (trafficData.length > 0) {
       const group = L.featureGroup(markersLayerRef.current.getLayers());
       mapInstanceRef.current.fitBounds(group.getBounds(), { padding: [50, 50], maxZoom: 15 });
@@ -164,16 +162,20 @@ export default function Home() {
     }
   }, [leafletLoaded, trafficData]);
 
-  // Custom Tooltip for the Recharts graph with restored HTML tags
+  // FIXED Tooltip rendering logic to grab values by specific names instead of array index
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
+      const rainData = payload.find((p: any) => p.dataKey === 'precipitation_mm')?.value || 0;
+      const normalData = payload.find((p: any) => p.dataKey === 'freeflow_speed_kmh')?.value || 0;
+      const liveData = payload.find((p: any) => p.dataKey === 'current_speed_kmh')?.value || 0;
+
       return (
         <div className="bg-black/90 border border-white/10 p-3 rounded-lg shadow-xl text-xs font-sans">
           <p className="text-gray-400 mb-2">{label}</p>
-          <p className="text-green-400">Normal Speed: <span className="font-bold">{payload[0]?.value} km/h</span></p>
-          <p className="text-red-400 mb-2">Live Speed: <span className="font-bold">{payload[1]?.value} km/h</span></p>
-          {payload[2]?.value > 0 && (
-            <p className="text-blue-400 pt-2 border-t border-white/10 mt-2">Rain: {payload[2].value} mm/hr</p>
+          <p className="text-green-400">Normal Speed: <span className="font-bold">{normalData} km/h</span></p>
+          <p className="text-red-400 mb-2">Live Speed: <span className="font-bold">{liveData} km/h</span></p>
+          {rainData > 0 && (
+            <p className="text-blue-400 pt-2 border-t border-white/10 mt-2">Rain: {rainData} mm/hr</p>
           )}
         </div>
       );
@@ -181,12 +183,10 @@ export default function Home() {
     return null;
   };
 
-  // Fully restored return block with intact <main> and <div> wrappers
   return (
     <main className="w-screen h-screen relative bg-black overflow-hidden font-sans">
       <div ref={mapContainerRef} className="absolute inset-0 z-0" />
 
-      {/* Dynamic Floating Panel */}
       <div className={`absolute top-6 left-6 ${showChart ? 'w-[600px]' : 'w-96'} transition-all duration-300 ease-in-out bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-white shadow-[0_0_40px_rgba(0,0,0,0.8)] z-[1000]`}>
         <div className="flex justify-between items-start mb-6">
           <div>
@@ -201,7 +201,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div className="p-4 bg-white/5 rounded-xl border border-white/5">
             <span className="text-gray-400 text-xs uppercase tracking-wider block mb-2">Flow Status</span>
@@ -218,7 +217,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Recharts Expansion Area */}
         {showChart && (
           <div className="mt-6 pt-6 border-t border-white/10 animate-in fade-in slide-in-from-top-4 duration-500">
             <h3 className="text-sm font-semibold text-gray-300 mb-4">24-Hour Traffic Timeline</h3>
