@@ -126,7 +126,7 @@ export default function Home() {
 
       // Kept radius at 50 for specific street tracking
       const marker = L.circle([loc.lat, loc.lon], {
-        radius: 50, fillColor: zoneColor, color: zoneColor, weight: 2, opacity: 0.8, fillOpacity: 0.5
+        radius: 250, fillColor: zoneColor, color: zoneColor, weight: 2, opacity: 0.8, fillOpacity: 0.5
       });
 
       const popupContent = `
