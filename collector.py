@@ -31,8 +31,8 @@ log = logging.getLogger(__name__)
 BASE_DIR = Path(__file__).resolve().parent
 LOCATIONS_FILE = BASE_DIR / "config" / "locations.json"
 
-# Be polite to free-tier APIs - small delay between locations
-REQUEST_DELAY_SECONDS = 0.5
+# Increased to 1.5s to prevent Open-Meteo API rate limit timeouts across 50 locations
+REQUEST_DELAY_SECONDS = 1.5
 
 
 def load_locations() -> list:
@@ -55,7 +55,8 @@ def run_once() -> None:
             weather = get_current_weather(loc["lat"], loc["lon"])
         except Exception as e:
             log.error(f"Weather fetch failed for {name}: {e}")
-            weather = {"precipitation_mm": None, "weather_code": None}
+            # Default precipitation to 0.0 instead of None to prevent chart rendering breaks
+            weather = {"precipitation_mm": 0.0, "weather_code": None}
 
         try:
             traffic = get_traffic_flow(loc["lat"], loc["lon"])
