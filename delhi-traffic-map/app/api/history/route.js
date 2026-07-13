@@ -14,9 +14,13 @@ export async function GET() {
     const query = `
       SELECT timestamp_utc, current_speed_kmh, freeflow_speed_kmh, precipitation_mm
       FROM samples
-      WHERE location_name = 'Film City Sector 16A, Noida'
+<comment-tag id="1">      WHERE location_name = 'Film City Sector 16A, Noida'
       ORDER BY timestamp_utc ASC
-      LIMIT 96;
+      LIMIT 96;</comment-tag id="1" text="Update the historical data query to pull from one of your new Delhi locations, otherwise your trends chart will be completely empty! Also, since we changed the interval to 30 minutes, 24 hours of data is now exactly 48 data points, not 96.
+
+      WHERE location_name = 'ITO Intersection'
+      ORDER BY timestamp_utc ASC
+      LIMIT 48;" type="suggestion">
     `;
 
     const { rows } = await pool.query(query);

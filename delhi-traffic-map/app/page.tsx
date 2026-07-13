@@ -14,9 +14,13 @@ interface TrafficData {
   timestamp_utc: string;
 }
 
-const MOCK_DATA: TrafficData[] = [
+<comment-tag id="1">const MOCK_DATA: TrafficData[] = [
   { id: 1, location_name: "Film City Sector 16A, Noida", lat: 28.5682, lon: 77.3143, current_speed_kmh: 18, freeflow_speed_kmh: 35, precipitation_mm: 0.0, timestamp_utc: new Date().toISOString() },
-];
+];</comment-tag id="1" text="Update the initial mock data to point to a central Delhi location so the map defaults to Delhi instead of Noida before the database loads.
+
+const MOCK_DATA: TrafficData[] = [
+  { id: 1, location_name: \"ITO Intersection\", lat: 28.6284, lon: 77.2404, current_speed_kmh: 18, freeflow_speed_kmh: 35, precipitation_mm: 0.0, timestamp_utc: new Date().toISOString() },
+];" type="suggestion">
 
 export default function Home() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -96,7 +100,9 @@ export default function Home() {
     const tomTomKey = process.env.NEXT_PUBLIC_TOMTOM_KEY;
 
     if (!mapInstanceRef.current) {
-      mapInstanceRef.current = L.map(mapContainerRef.current, { zoomControl: false }).setView([28.5682, 77.3143], 14); 
+      <comment-tag id="2">mapInstanceRef.current = L.map(mapContainerRef.current, { zoomControl: false }).setView([28.5682, 77.3143], 14);</comment-tag id="2" text="Update the starting coordinates of the map to center over central Delhi (ITO) instead of Noida, and zoom out slightly so all Delhi points are visible on launch.
+
+mapInstanceRef.current = L.map(mapContainerRef.current, { zoomControl: false }).setView([28.6284, 77.2404], 11);" type="suggestion"> 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap &copy; CARTO',
         subdomains: 'abcd',

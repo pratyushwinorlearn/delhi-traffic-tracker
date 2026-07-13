@@ -1,32 +1,62 @@
 [
-  {
-    "name": "DND Flyway Toll Plaza",
-    "lat": 28.5752,
-    "lon": 77.2915,
-    "notes": "Major entry point from Delhi"
-  },
-  {
-    "name": "Sector 18 Underpass",
-    "lat": 28.5705,
-    "lon": 77.3228,
-    "notes": "High traffic commercial zone"
-  },
-  {
-    "name": "Mahamaya Flyover",
-    "lat": 28.5441,
-    "lon": 77.3255,
-    "notes": "Massive intersection prone to waterlogging"
-  },
-  {
-    "name": "Film City Road",
-    "lat": 28.5682,
-    "lon": 77.3143,
-    "notes": "Media hub"
-  },
-  {
-    "name": "Okhla Bird Sanctuary Metro",
-    "lat": 28.5435,
-    "lon": 77.3068,
-    "notes": "Connecting road to Kalindi Kunj"
-  }
+{
+"name": "ITO Intersection",
+"lat": 28.6284,
+"lon": 77.2404,
+"notes": "Major central traffic hub"
+},
+{
+"name": "Minto Bridge Underpass",
+"lat": 28.6322,
+"lon": 77.2255,
+"notes": "Notorious for severe waterlogging"
+},
+{
+"name": "Ashram Chowk",
+"lat": 28.5718,
+"lon": 77.2608,
+"notes": "High volume intersection"
+},
+{
+"name": "Zakhira Flyover",
+"lat": 28.6653,
+"lon": 77.1706,
+"notes": "Prone to heavy monsoon jams"
+},
+{
+"name": "Pul Prahladpur Underpass",
+"lat": 28.5033,
+"lon": 77.2917,
+"notes": "Famous waterlogging hotspot on MB Road"
+},
+{
+"name": "Moolchand Flyover",
+"lat": 28.5639,
+"lon": 77.2341,
+"notes": "Ring road major bottleneck"
+},
+{
+"name": "Kashmere Gate ISBT",
+"lat": 28.6672,
+"lon": 77.2291,
+"notes": "Massive interstate traffic choke point"
+},
+{
+"name": "Dhaula Kuan",
+"lat": 28.5918,
+"lon": 77.1615,
+"notes": "Crucial airport and Gurugram connecting hub"
+},
+{
+"name": "Laxmi Nagar Vikas Marg",
+"lat": 28.6304,
+"lon": 77.2773,
+"notes": "East Delhi major bottleneck"
+},
+{
+"name": "RTR Marg Flyover",
+"lat": 28.5700,
+"lon": 77.1610,
+"notes": "Airport route bottleneck"
+}
 ]
