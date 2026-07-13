@@ -122,7 +122,7 @@ export default function Home() {
       const delayPercentage = Math.round((1 - flowRatio) * 100);
 
       const marker = L.circle([loc.lat, loc.lon], {
-        radius: 400, fillColor: zoneColor, color: zoneColor, weight: 1, opacity: 0.8, fillOpacity: 0.3
+        radius: 50, fillColor: zoneColor, color: zoneColor, weight: 1, opacity: 0.8, fillOpacity: 0.3
       });
 
       const popupContent = `
