@@ -122,7 +122,7 @@ export default function Home() {
       const delayPercentage = Math.round((1 - flowRatio) * 100);
 
       const marker = L.circle([loc.lat, loc.lon], {
-        radius: 50, fillColor: zoneColor, color: zoneColor, weight: 1, opacity: 0.8, fillOpacity: 0.3
+        radius: 400, fillColor: zoneColor, color: zoneColor, weight: 1, opacity: 0.8, fillOpacity: 0.3
       });
 
       const popupContent = `
@@ -147,6 +147,12 @@ export default function Home() {
       marker.bindPopup(popupContent);
       marker.addTo(markersLayerRef.current);
     });
+
+    // Auto-zoom the map to fit all the markers perfectly
+    if (trafficData.length > 0) {
+      const group = L.featureGroup(markersLayerRef.current.getLayers());
+      mapInstanceRef.current.fitBounds(group.getBounds(), { padding: [50, 50], maxZoom: 15 });
+    }
 
     setIsRaining(raining);
     if (trafficData.length > 0 && trafficData[0].timestamp_utc) {
@@ -179,7 +185,7 @@ export default function Home() {
       <div className={`absolute top-6 left-6 ${showChart ? 'w-[600px]' : 'w-96'} transition-all duration-300 ease-in-out bg-black/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-white shadow-[0_0_40px_rgba(0,0,0,0.8)] z-[1000]`}>
         <div className="flex justify-between items-start mb-6">
           <div>
-            <h1 className="text-2xl font-bold mb-1 tracking-tight">Noida Sector 16A</h1>
+            <h1 className="text-2xl font-bold mb-1 tracking-tight">Delhi NCR Live Map</h1>
             <p className="text-sm text-gray-400">Real-time rain impact vs normal flow</p>
           </div>
           <button 
