@@ -48,5 +48,6 @@
 { "name": "Paharganj (DBG Road)", "lat": 28.6444, "lon": 77.2115, "notes": "Railway station chaos" },
 { "name": "Sadar Bazar", "lat": 28.6547, "lon": 77.2023, "notes": "Wholesale market dense traffic" },
 { "name": "Chandni Chowk", "lat": 28.6560, "lon": 77.2310, "notes": "Old Delhi severe congestion" },
-{ "name": "India Gate Hexagon", "lat": 28.6129, "lon": 77.2295, "notes": "Central VIP traffic restrictions" }
+{ "name": "India Gate Hexagon", "lat": 28.6129, "lon": 77.2295, "notes": "Central VIP traffic restrictions" },
+{ "name": "Film City Sector 16A, Noida", "lat": 28.5682, "lon": 77.3143, "notes": "Media hub" }
 ]
