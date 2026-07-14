@@ -251,12 +251,11 @@ export default function Home() {
 
             {/* THE NEW LIVE BOTTLENECK LEADERBOARD */}
             <div className="mt-6 pt-4 border-t border-white/10">
-              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Live Top Bottlenecks</h3>
-              <div className="space-y-2">
+              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Live Bottleneck Rankings</h3>
+              <div className="space-y-2 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
                 {[...trafficData]
                   .map(d => ({ ...d, delay: Math.round((1 - d.current_speed_kmh / d.freeflow_speed_kmh) * 100) }))
                   .sort((a, b) => b.delay - a.delay)
-                  .slice(0, 3) // Show the top 3 worst areas
                   .map((loc, i) => (
                     <div 
                       key={loc.id} 
