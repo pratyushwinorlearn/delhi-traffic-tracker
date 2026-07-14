@@ -8,17 +8,20 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 });
 
-export async function GET() {
+export async function GET(request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const location = searchParams.get('location') || 'ITO Intersection';
+
     const query = `
       SELECT timestamp_utc, current_speed_kmh, freeflow_speed_kmh, precipitation_mm
       FROM samples
-      WHERE location_name = 'ITO Intersection'
+      WHERE location_name = $1
       ORDER BY timestamp_utc ASC
       LIMIT 48;
     `;
 
-    const { rows } = await pool.query(query);
+    const { rows } = await pool.query(query, [location]);
     return NextResponse.json(rows);
   } catch (error) {
     console.error("History API Error:", error);

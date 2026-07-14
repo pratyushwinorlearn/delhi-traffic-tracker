@@ -26,6 +26,7 @@ export default function Home() {
 
   const [trafficData, setTrafficData] = useState<TrafficData[]>([]);
   const [historyData, setHistoryData] = useState<any[]>([]);
+  const [selectedLocation, setSelectedLocation] = useState<string>("ITO Intersection");
   const [isRaining, setIsRaining] = useState(false);
   const [leafletLoaded, setLeafletLoaded] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<string>('');
@@ -53,7 +54,7 @@ export default function Home() {
     if (!showChart) return;
     const fetchHistory = async () => {
       try {
-        const res = await fetch('/api/history');
+        const res = await fetch(`/api/history?location=${encodeURIComponent(selectedLocation)}`);
         const data = await res.json();
         
         // Format time for the chart X-axis
@@ -67,7 +68,7 @@ export default function Home() {
       }
     };
     fetchHistory();
-  }, [showChart]);
+  }, [showChart, selectedLocation]);
 
   // Dynamically load Leaflet
   useEffect(() => {
@@ -126,6 +127,12 @@ export default function Home() {
 
       const marker = L.circle([loc.lat, loc.lon], {
         radius: 250, fillColor: zoneColor, color: zoneColor, weight: 2, opacity: 0.8, fillOpacity: 0.5
+      });
+
+      // Make circles clickable to change the graph!
+      marker.on('click', () => {
+        setSelectedLocation(loc.location_name);
+        setShowChart(true);
       });
 
       const popupContent = `
@@ -219,7 +226,7 @@ export default function Home() {
 
         {showChart && (
           <div className="mt-6 pt-6 border-t border-white/10 animate-in fade-in slide-in-from-top-4 duration-500">
-            <h3 className="text-sm font-semibold text-gray-300 mb-4">24-Hour Traffic Timeline</h3>
+            <h3 className="text-sm font-semibold text-gray-300 mb-4">Timeline: <span className="text-white">{selectedLocation}</span></h3>
             {historyData.length < 2 ? (
               <div className="h-48 flex items-center justify-center text-sm text-gray-500">
                 Waiting for GitHub Actions to collect more data points...
@@ -241,6 +248,31 @@ export default function Home() {
                 </ResponsiveContainer>
               </div>
             )}
+
+            {/* THE NEW LIVE BOTTLENECK LEADERBOARD */}
+            <div className="mt-6 pt-4 border-t border-white/10">
+              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Live Top Bottlenecks</h3>
+              <div className="space-y-2">
+                {[...trafficData]
+                  .map(d => ({ ...d, delay: Math.round((1 - d.current_speed_kmh / d.freeflow_speed_kmh) * 100) }))
+                  .sort((a, b) => b.delay - a.delay)
+                  .slice(0, 3) // Show the top 3 worst areas
+                  .map((loc, i) => (
+                    <div 
+                      key={loc.id} 
+                      onClick={() => setSelectedLocation(loc.location_name)}
+                      className="flex justify-between items-center bg-white/5 p-2.5 rounded-lg cursor-pointer hover:bg-white/10 transition-colors border border-white/5"
+                    >
+                      <span className="text-sm text-gray-200 truncate pr-2">
+                        <span className="text-gray-500 font-mono mr-2">#{i+1}</span>
+                        {loc.location_name}
+                      </span>
+                      <span className="text-sm font-bold text-red-400">+{loc.delay}%</span>
+                    </div>
+                  ))}
+              </div>
+            </div>
+
           </div>
         )}
 
